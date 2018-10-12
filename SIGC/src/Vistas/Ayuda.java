@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+//Modificado por Franz Danny 
 /*
  * JIFAyuda.java
  *
@@ -15,7 +15,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JToolBar;
 
-//Modificado por Franz Danny 
 public class Ayuda extends javax.swing.JInternalFrame {
 
     private JDesktopPane des;
