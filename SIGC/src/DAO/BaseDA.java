@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class BaseDA {
+    
+    //modifido por limache & maly
 
     private Connection cn;
     private String connectionString;
