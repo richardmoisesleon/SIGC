@@ -1,5 +1,10 @@
 package Beans;
 
+/*
+*
+*MODIFICADO POR KATIUSKA Y DIEGO
+*
+*/
 import java.util.Date;
 
 public class RolBE {
