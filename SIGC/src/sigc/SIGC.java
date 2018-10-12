@@ -11,6 +11,7 @@ public class SIGC {
         // mostrando la ventana principal de nuestra aplicacion
         Principal oPrincipal = new Principal();
         oPrincipal.setVisible(true);
+
     }
     
 }
