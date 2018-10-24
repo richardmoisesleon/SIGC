@@ -293,7 +293,14 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
 
     private void JBIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresarActionPerformed
 
-        princ.llenarUsuario(null);
+        //princ.llenarUsuario(null);
+        
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        oUsuarioBE.setNombre(JTFUsuaruio.getText());
+        princ.llenarUsuario(oUsuarioBE);
+        this.dispose();
+        
+        /*
         this.dispose();
 
         if (JTFUsuaruio.getText().equals("")) {
@@ -316,6 +323,7 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
                 this.dispose();
             }
         }
+                */
 
     }//GEN-LAST:event_JBIngresarActionPerformed
 
