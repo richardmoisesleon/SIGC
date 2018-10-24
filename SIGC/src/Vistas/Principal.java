@@ -4,6 +4,7 @@ package Vistas;
 import Services.RolBL;
 import Beans.UsuarioBE;
 import DAO.UsuarioDA;
+import Services.UsuarioBL;
 import util.Background;
 //import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
 import java.awt.image.BufferedImage;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
@@ -374,26 +376,14 @@ public class Principal extends javax.swing.JFrame {
 
     private void validarRolUsuario(UsuarioBE oUsuarioBE) {
 
-        try {
-            String cad = "select vista.idvista from "
-                    + "rol inner join usuario on usuario.idrol = rol.idrol "
-                    + "inner join rolvista on rol.idrol = rolvista.idrol "
-                    + "inner join vista on vista.idvista = rolvista.idvista "
-                    + "where usuario.usuario = 'mabellanedam' and rolvista.estado = '1'";
+        UsuarioBL oUsuarioBL = new UsuarioBL();
+        List<Integer> listaIds = 
+                oUsuarioBL.obtenerIdVistaByUsuario(oUsuarioBE);
 
-            RolBL oRolBL = new RolBL();
-            ResultSet rs = oRolBL.listarRS(cad);
-            System.out.println(cad);
-            while (rs.next()) {
-                int idvista = rs.getInt("idvista");
-                (mapJMI.get(idvista)).setEnabled(true);
-
-//                validarRolUsuario(oUsuarioBE);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        for(Integer id : listaIds){
+            mapJMI.get(id).setEnabled(true);
         }
-
+        
     }
 }
 
