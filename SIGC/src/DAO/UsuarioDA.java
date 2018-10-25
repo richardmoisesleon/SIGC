@@ -351,8 +351,6 @@ public class UsuarioDA extends BaseDA {
         
         UsuarioBE oUsuarioBE = new UsuarioBE();
         
-        
-        
         return oUsuarioBE;
     }
 }
