@@ -3,6 +3,7 @@ package Services;
 import Beans.UsuarioBE;
 import DAO.UsuarioDA;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class UsuarioBL {
@@ -23,6 +24,12 @@ public class UsuarioBL {
             oUsuarioDA = null;
         }
         return oUsuarioBE;
+    }
+    
+    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE){
+        
+         UsuarioDA oUsuarioDA = new UsuarioDA();
+         return oUsuarioDA.obtenerIdVistaByUsuario(oUsuarioBE);
     }
 
     public ArrayList<UsuarioBE> listarRegistrosUsuarioBE(UsuarioBE oUsuarioBE) {
@@ -128,6 +135,23 @@ public class UsuarioBL {
         }
 
         return modelo;
+    }
+
+    public UsuarioBE findUsuarioByUserAndPass(String usuario, String contrasenia) {
+        
+        // validar el nombre de usuario y password
+        // de tal manera que no sean vacios y no sean
+        // iguales entre si
+        
+        
+        
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        
+        oUsuarioBE = oUsuarioDA.findUsuarioByUserAndPass(
+                usuario,contrasenia);
+        
+        return oUsuarioBE;
     }
 
 
