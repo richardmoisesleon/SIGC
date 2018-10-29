@@ -387,7 +387,7 @@ public class UsuarioDA extends BaseDA {
 
     public UsuarioBE updateUser(UsuarioBE oUsuarioBE) {
 
-        // berrocal y Casas
+        // Berrocal y Casas
         // actualizando los datos de la persona
         //UsuarioBE oUsuarioBEresp = new UsuarioBE();
         UtilDAO oUtilDAO = new UtilDAO();
@@ -417,9 +417,9 @@ public class UsuarioDA extends BaseDA {
             
             //se realiza la comprobacion de la actualizacion.
             if(cad == 1){
-                
+                oUsuarioBE.setIndOpSp(1);
             }else{
-                
+                oUsuarioBE.setIndOpSp(2);
             }
 
         } catch (Exception e) {
