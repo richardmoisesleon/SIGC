@@ -39,7 +39,7 @@ public class UsuarioDA extends BaseDA {
                     + "inner join rolvista on rol.idrol = rolvista.idrol "
                     + "inner join vista on vista.idvista = rolvista.idvista "
                     + "where usuario.usuario = '" + oUsuarioBE.getUsuario() + "' and rolvista.estado = '1'";
-            
+
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
@@ -350,7 +350,7 @@ public class UsuarioDA extends BaseDA {
         // en el bean oUsuarioBE 
         UsuarioBE oUsuarioBE = new UsuarioBE();
         try {
-            String cad = "select * from usuario where usuario.usuario = '" 
+            String cad = "select * from usuario where usuario.usuario = '"
                     + usuario + "' and usuario.contrasenia=('" + contrasenia + "');";
 
             RolBL oRolBL = new RolBL();
@@ -373,51 +373,75 @@ public class UsuarioDA extends BaseDA {
         return oUsuarioBE;
     }
 
-    public List<UsuarioBE> listarPersonas(){
-        
+    public List<UsuarioBE> listarPersonas() {
+
         // Arce y Zarate
-        
         return null;
     }
-    
-    public UsuarioBE findUsuarioById(int id){
-        
+
+    public UsuarioBE findUsuarioById(int id) {
+
         // limache y Narciso
-        
         return null;
     }
-    
-    public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
-        
+
+    public UsuarioBE updateUser(UsuarioBE oUsuarioBE) {
+
         // berrocal y Casas
-        
         // actualizando los datos de la persona
-        UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        //UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        UtilDAO oUtilDAO = new UtilDAO();
+        try {
+        int cad = oUtilDAO.ejecutarUpdate("update usuario "
+                + " set usuario = '" + oUsuarioBE.getUsuario() + "' "
+                + " ,contrasenia = '" + oUsuarioBE.getContrasenia() + "' "
+                + " ,nrodocumento = '" + oUsuarioBE.getNrodocumento() + "' "
+                + " ,nombre = '" + oUsuarioBE.getNombre() + "' "
+                + " ,appaterno = '" + oUsuarioBE.getAppaterno() + "' "
+                + " ,apmaterno = '" + oUsuarioBE.getApmaterno() + "' "
+                + " ,telefonofijo = '" + oUsuarioBE.getTelefonofijo() + "' "
+                + " ,telefonomovil = '" + oUsuarioBE.getTelefonomovil() + "' "
+                + " ,direccion = '" + oUsuarioBE.getDireccion() + "' "
+                + " ,email = '" + oUsuarioBE.getEmail() + "' "
+                + " ,idtiposexo = '" + oUsuarioBE.getIdtiposexo() + "' "
+                + " ,estado = '" + oUsuarioBE.isEstado() + "' "
+                + " ,inExist = '" + oUsuarioBE.isInExist() + "' "
+                + " ,fecha_nacimiento = '" + oUsuarioBE.getFecha_nacimiento() + "' "
+                + " ,estadi_civil = '" + oUsuarioBE.getEstado_civil() + "' "
+                + " ,cuenta_facebook = '" + oUsuarioBE.getCuenta_facebook() + "' "
+                + " where idusuario= " + oUsuarioBE.getIdusuario() + ";");
+
+        System.out.println("resultado" + cad);
         
-        try{
+            oUsuarioBE.setIndOpSp(1);
             
-            oUsuarioBEresp.setIndOpSp(1);
-        }catch(Exception e){
-            oUsuarioBEresp.setIndOpSp(2);
+            //se realiza la comprobacion de la actualizacion.
+            if(cad == 1){
+                
+            }else{
+                
+            }
+
+        } catch (Exception e) {
+            oUsuarioBE.setIndOpSp(2);
         }
-        
-        return oUsuarioBEresp;
+
+        return oUsuarioBE;
     }
-    
-    public UsuarioBE addUser(UsuarioBE oUsuarioBE){
-        
+
+    public UsuarioBE addUser(UsuarioBE oUsuarioBE) {
+
         // Mora y Huaycha
-        
         // realizando el registro de una nuevo usuario
         UsuarioBE oUsuarioBEresp = new UsuarioBE();
-        
-        try{
-            
+
+        try {
+
             oUsuarioBEresp.setIndOpSp(1);
-        }catch(Exception e){
+        } catch (Exception e) {
             oUsuarioBEresp.setIndOpSp(2);
         }
-        
+
         return oUsuarioBEresp;
     }
 
