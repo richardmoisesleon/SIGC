@@ -158,7 +158,14 @@ public class UsuarioBL {
     public List<UsuarioBE> listarPersonas(){
         // Medina Jayo y Roca
         
-        return null;
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        //se guarda la lista en oListaUsuarioBE
+        List<UsuarioBE> oListaUsuarioBE = oUsuarioDA.listarPersonas();
+        
+        //retornando la lista UsuarioBE
+        return oListaUsuarioBE;
+    
     }
     
     public UsuarioBE findUsuarioById(int id){
