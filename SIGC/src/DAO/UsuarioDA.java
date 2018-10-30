@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -374,10 +375,70 @@ public class UsuarioDA extends BaseDA {
     }
 
     public List<UsuarioBE> listarPersonas(){
-        
         // Arce y Zarate
+        // modificado po Zarate Y arce
+        ArrayList<UsuarioBE> listarPersona = new ArrayList<>();
+        UtilDAO oUtilDAO = new UtilDAO();
         
-        return null;
+        oUtilDAO.ejecutarQuery("select * from usuario  ");
+        
+         ResultSet resultados = oUtilDAO.ejecutarQuery("select * from usuario  ");
+                 
+
+        try {
+            while (resultados.next()) {
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+                
+
+                int id = resultados.getInt("idusuario");
+                String usuario = resultados.getString("usuario");
+                String contrasenia = resultados.getString("contrasenia");
+                String nrodocumento = resultados.getString("nrodocumento");
+                String nombre= resultados.getString("nombre");
+                String appaterno= resultados.getString("appaterno");
+                String apmaterno= resultados.getString("apmaterno");
+                String telefonofijo= resultados.getString("telefonofijo");
+                String telefonomovil= resultados.getString("telefonomovil");
+                String direccion= resultados.getString("direccion");
+                String email= resultados.getString("email");
+                short idtiposexo= resultados.getShort("idtiposexo");
+                boolean estado= resultados.getBoolean("estado");
+                boolean inExist= resultados.getBoolean("inExist");
+                int idrol= resultados.getInt("idrol");
+                String fecha_nacimiento= resultados.getString("fecha_nacimineto");
+                String estado_civil= resultados.getString("estado_civil");
+                String cuenta_facebook= resultados.getString("cuenta_facebook");
+
+                
+                oUsuarioBE.setIdusuario(id);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setNombre(nombre);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                 oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+                
+
+                listarPersona.add(oUsuarioBE);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+       
+                
+        return listarPersona;
     }
     
     public UsuarioBE findUsuarioById(int id){
