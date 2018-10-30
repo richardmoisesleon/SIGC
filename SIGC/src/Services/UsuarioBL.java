@@ -4,7 +4,6 @@ import Beans.UsuarioBE;
 import DAO.UsuarioDA;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class UsuarioBL {
@@ -26,11 +25,11 @@ public class UsuarioBL {
         }
         return oUsuarioBE;
     }
-
-    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE) {
-
-        UsuarioDA oUsuarioDA = new UsuarioDA();
-        return oUsuarioDA.obtenerIdVistaByUsuario(oUsuarioBE);
+    
+    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE){
+        
+         UsuarioDA oUsuarioDA = new UsuarioDA();
+         return oUsuarioDA.obtenerIdVistaByUsuario(oUsuarioBE);
     }
 
     public ArrayList<UsuarioBE> listarRegistrosUsuarioBE(UsuarioBE oUsuarioBE) {
@@ -60,7 +59,7 @@ public class UsuarioBL {
         } finally {
             oUsuarioBE = null;
             oUsuarioDA = null;
-        }
+        }        
         return resultado;
     }
 
@@ -139,82 +138,55 @@ public class UsuarioBL {
     }
 
     public UsuarioBE findUsuarioByUserAndPass(String usuario, String contrasenia) {
-
+        
         // validar el nombre de usuario y password
         // de tal manera que no sean vacios y no sean
         // iguales entre si
+        
+        
+        
         UsuarioDA oUsuarioDA = new UsuarioDA();
         UsuarioBE oUsuarioBE = new UsuarioBE();
-
+        
         oUsuarioBE = oUsuarioDA.findUsuarioByUserAndPass(
-                usuario, contrasenia);
-
+                usuario,contrasenia);
+        
         return oUsuarioBE;
     }
 
-    public List<UsuarioBE> listarPersonas() {
+    
+    public List<UsuarioBE> listarPersonas(){
         // Medina Jayo y Roca
-
-        return null;
-    }
-
-    public UsuarioBE findUsuarioById(int id) {
-        // Quispe
-
-        return null;
-    }
-
-    public UsuarioBE updateUser(UsuarioBE oUsuarioBE) {
-        //curi y machaca
-        UsuarioDA oUusuarioDA = new UsuarioDA();
-        //extraer los compos para realizar las modificaciones 
-        String nombre, apepaterno, apematerno, direccion, dni, telefonomovil;
-
-        nombre = (oUsuarioBE.getNombre());
-        apepaterno = (oUsuarioBE.getAppaterno());
-        apematerno = (oUsuarioBE.getApmaterno());
-        direccion = (oUsuarioBE.getDireccion());
-        dni = (oUsuarioBE.getFecha_nacimiento());
-        telefonomovil = (oUsuarioBE.getTelefonofijo());
-        // si al menos un   campo no debe  estár vacio, el foco apunta a q debe 
-        //tener los datos  para poder actualizar.
         
-        if (nombre.equals("") || apepaterno.equals("")
-                || apematerno.equals("") || direccion.equals("")
-                || dni.equals("") || telefonomovil.equals("")) {
-        //realiza la comparacion para poder hacer la actualizacion
-            oUsuarioBE.setIndOpSp(3);
-            return oUsuarioBE;
-        } else {
-            UsuarioBE resultados = oUusuarioDA.updateUser(oUsuarioBE);
-            return resultados;
-        }
-
+        return null;
+    }
+    
+    public UsuarioBE findUsuarioById(int id){
+        // Quispe
+        
+        return null;
+    }
+    
+    public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // Curi y Machaca
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
+    }
+    
+    public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // Curi y Machaca
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
     }
 
-    public UsuarioBE addUser(UsuarioBE oUsuarioBE) {
-        //curi y  machaca
-        UsuarioDA oUusuarioDA = new UsuarioDA();
-        String nombre, apepaterno, apematerno, direccion, dni, telefonomovil;
-
-        nombre = (oUsuarioBE.getNombre());
-        apepaterno = (oUsuarioBE.getAppaterno());
-        apematerno = (oUsuarioBE.getApmaterno());
-        direccion = (oUsuarioBE.getDireccion());
-        dni = (oUsuarioBE.getFecha_nacimiento());
-        telefonomovil = (oUsuarioBE.getTelefonofijo());
-         // si al menos un   campo no debe  contener datos, el foco apunta a q debe 
-        //tener los datos  para poder agregar.
-      
-        if (nombre.equals("") || apepaterno.equals("")
-                || apematerno.equals("") || direccion.equals("")
-                || dni.equals("") || telefonomovil.equals("")) {
-
-            oUsuarioBE.setIndOpSp(3);
-            return oUsuarioBE;
-        } else {
-            return oUusuarioDA.addUser(oUsuarioBE);
-        }
-
-    }
 }
