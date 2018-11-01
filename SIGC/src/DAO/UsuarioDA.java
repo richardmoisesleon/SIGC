@@ -558,11 +558,38 @@ public class UsuarioDA extends BaseDA {
         // Mora y Huaycha
         // realizando el registro de una nuevo usuario
         UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        UtilDAO utilDao = new UtilDAO();
+
+        int resultados = utilDao.ejecutarInsert("insert into "
+                + " persona(usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,"
+                + "telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,inExist,idrol,fecha_nacimiento,"
+                + "estado_civil,cuenta_facebook ) values ("
+                + " '" + oUsuarioBEresp.getUsuario() + "'"
+                + ", '" + oUsuarioBEresp.getContrasenia() + "'"
+                + ", '" + oUsuarioBEresp.getNrodocumento() + "'"
+                + ", '" + oUsuarioBEresp.getNombre() + "'"
+                + ", '" + oUsuarioBEresp.getAppaterno() + "'"
+                + ", '" + oUsuarioBEresp.getApmaterno() + "'"
+                + ", '" + oUsuarioBEresp.getTelefonofijo() + "'"
+                + ", '" + oUsuarioBEresp.getTelefonomovil() + "'"
+                + ", '" + oUsuarioBEresp.getDireccion() + "'"
+                + ", '" + oUsuarioBEresp.getEmail() + "'"
+                + ", '" + oUsuarioBEresp.getIdtiposexo() + "'"
+                + ", " + oUsuarioBEresp.isInExist() + ""
+                + ", '" + oUsuarioBEresp.getIdrol() + "'"
+                + ", " + oUsuarioBEresp.isEstado() + ""
+                + ", '" + oUsuarioBEresp.getFecha_nacimiento() + "'"
+                + ", '" + oUsuarioBEresp.getEstado_civil() + "'"
+                + ", '" + oUsuarioBEresp.getCuenta_facebook() + "');");
+
+        
+        oUsuarioBE = findUsuarioById(resultados);
 
         try {
 
             oUsuarioBEresp.setIndOpSp(1);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             oUsuarioBEresp.setIndOpSp(2);
         }
 
