@@ -582,7 +582,7 @@ public class UsuarioDA extends BaseDA {
                 + ", '" + oUsuarioBE.getEmail() + "'"
                 + ", '" + oUsuarioBE.getIdtiposexo() + "'"
                 + ", " + oUsuarioBE.isInExist() + ""
-                + ", " + oUsuarioBE.getEstado() + ""
+                + ", '" + oUsuarioBE.getEstado() + "'"
                 + ", '" + oUsuarioBE.getFecha_nacimiento() + "'"
                 + ", '" + oUsuarioBE.getCuenta_facebook() + "');");
 
