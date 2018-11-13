@@ -224,5 +224,18 @@ public class UsuarioBL {
         }
 
     }
+    
+    public List<UsuarioBE> listarPersonas(String algo) {
+        // Medina Jayo y Roca
+
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        //se guarda la lista en oListaUsuarioBE
+        List<UsuarioBE> oListaUsuarioBE = oUsuarioDA.listarPersonas(algo);
+
+        //retornando la lista UsuarioBE
+        return oListaUsuarioBE;
+
+    }
 
 }
