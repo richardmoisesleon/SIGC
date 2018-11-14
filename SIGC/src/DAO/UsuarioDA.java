@@ -599,6 +599,72 @@ public class UsuarioDA extends BaseDA {
 
         return oUsuarioBE;
     }
+    
+    public List<UsuarioBE> listarPersonas(String algo) {
+
+        // Arce y Zarate
+        // Arce y Zarate
+        // modificado po Zarate Y arce
+        ArrayList<UsuarioBE> listarPersona = new ArrayList<>();
+        UtilDAO oUtilDAO = new UtilDAO();
+
+        oUtilDAO.ejecutarQuery("select * from usuario where nombre like '%" + algo + "%'");
+
+        ResultSet resultados = oUtilDAO.ejecutarQuery("select * from usuario where nombre like '%" + algo + "%'");
+
+        try {
+            while (resultados.next()) {
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+
+                int id = resultados.getInt("idusuario");
+                String usuario = resultados.getString("usuario");
+                String contrasenia = resultados.getString("contrasenia");
+                String nrodocumento = resultados.getString("nrodocumento");
+                String nombre = resultados.getString("nombre");
+                String appaterno = resultados.getString("appaterno");
+                String apmaterno = resultados.getString("apmaterno");
+                String telefonofijo = resultados.getString("telefonofijo");
+                String telefonomovil = resultados.getString("telefonomovil");
+                String direccion = resultados.getString("direccion");
+                String email = resultados.getString("email");
+                short idtiposexo = resultados.getShort("idtiposexo");
+                boolean estado = resultados.getBoolean("estado");
+                boolean inExist = resultados.getBoolean("inExist");
+                int idrol = resultados.getInt("idrol");
+                //Error al digitar la columna fecha_nacimiento
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                String estado_civil = resultados.getString("estado_civil");
+                String cuenta_facebook = resultados.getString("cuenta_facebook");
+
+                oUsuarioBE.setIdusuario(id);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setNombre(nombre);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                listarPersona.add(oUsuarioBE);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listarPersona;
+
+    }
 
     public List<UsuarioBE> findUsuarioByNombre(String nombre) {
         
