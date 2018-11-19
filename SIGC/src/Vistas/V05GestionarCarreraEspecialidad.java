@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vistas;
 
 import Beans.CarreraEspecialidadBE;
@@ -31,7 +26,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
 
         String[] titulo = {"id", "carrera", "descripcion", "estado"};
         String[] registro = new String[4];
-
+        
+        //Agregando comentarios
+        
         modelo = new DefaultTableModel(null, titulo);
         //ingresando datosa a la tabla
         for (CarreraEspecialidadBE itemPer : listacarrera) {
